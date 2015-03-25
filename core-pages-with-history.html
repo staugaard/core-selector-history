@@ -1,0 +1,23 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../core-pages/core-pages.html">
+<link rel="import" href="core-selector-history.html">
+
+<!--
+Element providing solution to no problem in particular.
+
+##### Example
+
+    <core-pages-with-history></core-pages-with-history>
+
+@element core-pages-with-history
+@blurb Element providing solution to no problem in particular.
+@status alpha
+@homepage http://staugaard.github.io/core-pages-with-history
+-->
+
+<polymer-element name="core-pages-with-history" extends="core-pages">
+  <script>
+    Polymer(Polymer.mixin({
+    }, Polymer.CoreSelectorHistory));
+  </script>
+</polymer-element>

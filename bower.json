@@ -1,0 +1,18 @@
+{
+  "name": "core-selector-history",
+  "version": "0.0.0",
+  "keywords": [
+    "seed",
+    "polymer",
+    "web-components"
+  ],
+  "main": "core-selector-history.html",
+  "dependencies": {
+    "polymer": "Polymer/polymer#^0.5.4",
+    "core-selector": "Polymer/core-selector"
+  },
+  "devDependencies": {
+    "web-component-tester": "Polymer/web-component-tester#^2.2.3",
+    "core-pages": "Polymer/core-pages"
+  }
+}

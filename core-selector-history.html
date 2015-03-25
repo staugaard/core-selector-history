@@ -1,0 +1,34 @@
+<!--
+ * @group Polymer Mixins
+-->
+
+<link rel="import" href="../polymer/polymer.html">
+
+<script>
+  (function(scope) {
+    scope.CoreSelectorHistory = {
+      history: [],
+      _ignoreNextSelectedChange: false,
+
+      selectedChanged: function(oldValue, newValue) {
+        if (!this._ignoreNextSelectedChange) {
+          this.history.push(newValue);
+        } else {
+          this._ignoreNextSelectedChange = false;
+        }
+        this.super(arguments);
+      },
+
+      back: function() {
+        if (this.history.length > 1) {
+          this._ignoreNextSelectedChange = true;
+          this.history.pop();
+          this.selected = this.history[this.history.length - 1];
+          return true;
+        } else {
+          return false;
+        }
+      }
+    };
+  })(Polymer);
+</script>
