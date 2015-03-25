@@ -1,0 +1,28 @@
+{
+  "name": "core-selector-history",
+  "keywords": [
+    "seed",
+    "polymer",
+    "web-components"
+  ],
+  "main": "core-selector-history.html",
+  "dependencies": {
+    "polymer": "Polymer/polymer#^0.5.4",
+    "core-selector": "Polymer/core-selector"
+  },
+  "devDependencies": {
+    "web-component-tester": "Polymer/web-component-tester#^2.2.3",
+    "core-pages": "Polymer/core-pages"
+  },
+  "homepage": "https://github.com/staugaard/core-selector-history",
+  "_release": "43da75cdbf",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "43da75cdbfeba0aea25d0bab615522b8bbc83faf"
+  },
+  "_source": "git://github.com/staugaard/core-selector-history.git",
+  "_target": "master",
+  "_originalSource": "staugaard/core-selector-history",
+  "_direct": true
+}

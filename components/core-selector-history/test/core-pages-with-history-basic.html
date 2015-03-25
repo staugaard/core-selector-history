@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>core-pages-with-history</title>
+
+  <script src="../../webcomponentsjs/webcomponents.js"></script>
+  <script src="../../web-component-tester/browser.js"></script>
+
+  <!-- Step 1: import the element to test -->
+  <link rel="import" href="../core-pages-with-history.html">
+
+</head>
+<body>
+
+  <core-pages-with-history id="fixture">
+    <div>0</div>
+    <div>1</div>
+    <div>2</div>
+  </core-pages-with-history>
+
+  <script>
+    var myEl = document.getElementById('fixture');
+
+    suite('<core-pages-with-history>', function() {
+
+      beforeEach(function(done) {
+        myEl.selected = '0';
+        flush(function() {
+          myEl.history = ['0'];
+          done();
+        });
+      })
+
+      test('adds to history when "selected" changes', function(done) {
+        flush(function() {
+          assert.equal(myEl.selected, '0');
+          myEl.selected = '1';
+          flush(function() {
+            assert.deepEqual(myEl.history, ['0', '1']);
+
+            myEl.selected = '2';
+            flush(function() {
+              assert.deepEqual(myEl.history, ['0', '1', '2']);
+              done();
+            });
+          });
+        });
+      });
+
+      test('provides a back function', function(done) {
+        flush(function() {
+          myEl.selected = '1';
+          flush(function() {
+            myEl.selected = '2';
+            flush(function() {
+              assert.equal(myEl.selected, '2');
+              assert.deepEqual(myEl.history, ['0', '1', '2']);
+              assert.ok(myEl.back());
+              // done();
+              flush(function() {
+                assert.equal(myEl.selected, '1');
+                done();
+              });
+            });
+          });
+        });
+      });
+
+      test('removes from history when calling back', function(done) {
+        flush(function() {
+          myEl.selected = '1';
+          flush(function() {
+            myEl.selected = '2';
+            flush(function() {
+              assert.deepEqual(myEl.history, ['0', '1', '2']);
+
+              myEl.back();
+              flush(function() {
+                assert.deepEqual(myEl.history, ['0', '1']);
+                done();
+              });
+            });
+          });
+        });
+      });
+
+    });
+  </script>
+
+</body>
+</html>
